@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IsaiahPhotoVsTheRock</title>
+    <style>
+      .bodyclass {
+        background-color: #eb4034;
+        color: #ffffff;
+        text-align: center;
+      }
+      #ccib {
+        width: 400px;
+      }
+      fatty {
+        font-size: 80pt;
+      }
+      button {
+        border: 3px solid #ffffff;
+        background-color: #eb4034;
+        color: #ffffff;
+      }
+      button:hover {
+        border: 3px solid #ffffff;
+        background-color: #ffffff;
+        color: #000000;
+      }
+      input[type="text"] {
+        height: 19px;
+      }
+      input[type="number"] {
+        height: 19px;
+      }
+      #numcount {
+        width: 35px;
+      }
+      #counterdiv {
+        width: 50%;
+        height: 50%;
+        float: left;
+      }
+      #counterdivthe {
+        width: 50%;
+        height: 50%;
+        float: right;
+      }
+      #logoarea {
+        width: 100%
+      }
+      img {
+        border-radius: 50%;
+        width: 60pt;
+        height: 60pt;
+      }
+      bigger {
+        font-size: 30pt;
+      }
+      #counterdivthe {
+        background-color: rgb(195, 53, 251);
+      }
+      #counterdiv {
+        background-color: rgb(212, 104, 255);
+      }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -60px;
+  
+        /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+        opacity: 0;
+        transition: opacity 1s;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+    <script>
+      const tR = "UCBdw4dLCLLHmTgAOnW4V0hQ";
+      const iP = "UCjPYYvIdTqn9U52p9IxJ72Q";
+      function updateSubCountI() {
+        const http2 = new XMLHttpRequest() // define http
+        http2.open("GET", "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=" + tR + "&key=AIzaSyABT3a15VgjifIKBcsBvTspmnNV0orfeRA") // get request
+        http2.send()
+        http2.onload = function startit3() {
+          const dait3 = http2.responseText;
+          const parsed3 = JSON.parse(dait3);
+          if (parsed3.items[0].statistics.hiddenSubscriberCount == true) {
+            document.getElementById("counterthe").innerHTML = "Hidden "
+          } else {
+            document.getElementById("counterthe").innerHTML = parsed3.items[0].statistics.subscriberCount;
+          }
+          setTimeout(updateSubCount, 1000);
+        };
+      }
+      function updateSubCount() {
+        const http2 = new XMLHttpRequest() // define http
+        http2.open("GET", "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=" + iP + "&key=AIzaSyABT3a15VgjifIKBcsBvTspmnNV0orfeRA") // get request
+        http2.send()
+        http2.onload = function startit3() {
+          const dait3 = http2.responseText;
+          const parsed3 = JSON.parse(dait3);
+          if (parsed3.items[0].statistics.hiddenSubscriberCount == true) {
+            document.getElementById("counter").innerHTML = "Hidden "
+          } else {
+            document.getElementById("counter").innerHTML = parsed3.items[0].statistics.subscriberCount;
+          }
+          setTimeout(updateSubCountI, 1000);
+        };
+      }
+      updateSubCountI();
+    </script>
+  </head>
+  <body class="bodyclass">
+    <font face="arial">
+      <br/>
+      <br/>
+      <div>
+        <div id="counterdivthe">
+        <div style="background-color: lightblue; color: black;"><img src="Rock.jpg" alt="The Rock"/><br/><div class="tooltip"><bigger>The Rock</bigger><yt-icon style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="width: 14px; height: 14px;" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M9.8,17.3l-4.2-4.1L7,11.8l2.8,2.7L17,7.4 l1.4,1.4L9.8,17.3z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
+          <span class="tooltiptext">Verified</span>
+        </div></div>
+        <fatty id="counterthe">0</fatty><big>subscribers</big>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        </div>
+        <div id="counterdiv">
+        <div style="background-color: lightskyblue; color: black;"><img src="Photo.jpg" alt="Isaiah Photo"/><br/><div class="tooltip"><bigger>Isaiah Photo</bigger><yt-icon style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="width: 14px; height: 14px;" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M9.8,17.3l-4.2-4.1L7,11.8l2.8,2.7L17,7.4 l1.4,1.4L9.8,17.3z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
+          <span class="tooltiptext">Verified</span>
+        </div></div>
+        <fatty id="counter">0</fatty><big>subscribers</big>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </font>
+  </body>
+</html>
