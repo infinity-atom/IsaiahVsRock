@@ -7,6 +7,8 @@
         background-color: #eb4034;
         color: #ffffff;
         text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
       }
       #ccib {
         width: 400px;
@@ -89,8 +91,29 @@
         visibility: visible;
         opacity: 1;
       }
+      .bottom {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+      }
     </style>
     <script>
+      function nFormatter(num, digits) {
+        const lookup = [
+          { value: 1, symbol: "" },
+          { value: 1e3, symbol: "k" },
+          { value: 1e6, symbol: "M" },
+          { value: 1e9, symbol: "G" },
+          { value: 1e12, symbol: "T" },
+          { value: 1e15, symbol: "P" },
+          { value: 1e18, symbol: "E" }
+        ];
+        const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+        var item = lookup.slice().reverse().find(function(item) {
+          return num >= item.value;
+        });
+        return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+      }
       const tR = "UCBdw4dLCLLHmTgAOnW4V0hQ";
       const iP = "UCjPYYvIdTqn9U52p9IxJ72Q";
       function updateSubCountI() {
@@ -103,7 +126,8 @@
           if (parsed3.items[0].statistics.hiddenSubscriberCount == true) {
             document.getElementById("counterthe").innerHTML = "Hidden "
           } else {
-            document.getElementById("counterthe").innerHTML = parsed3.items[0].statistics.subscriberCount;
+            document.getElementById("counterthe").innerHTML = nFormatter(parseInt(parsed3.items[0].statistics.subscriberCount), 2);
+            theRockCurrent = parseInt(parsed3.items[0].statistics.subscriberCount);
           }
           setTimeout(updateSubCount, 1000);
         };
@@ -118,7 +142,15 @@
           if (parsed3.items[0].statistics.hiddenSubscriberCount == true) {
             document.getElementById("counter").innerHTML = "Hidden "
           } else {
-            document.getElementById("counter").innerHTML = parsed3.items[0].statistics.subscriberCount;
+            document.getElementById("counter").innerHTML = nFormatter(parseInt(parsed3.items[0].statistics.subscriberCount), 2);
+            iCurrent = parseInt(parsed3.items[0].statistics.subscriberCount);
+          }
+          if (iCurrent > theRockCurrent) {
+            document.getElementById("winning").innerHTML = "Isaiah Photo is winning at " + String(iCurrent) + " subscribers. ";
+            console.log("start");
+          } else {
+            document.getElementById("winning").innerHTML = "The Rock is winning at " + String(theRockCurrent) + " subscribers. ";
+            console.log("start");
           }
           setTimeout(updateSubCountI, 1000);
         };
@@ -127,36 +159,26 @@
     </script>
   </head>
   <body class="bodyclass">
-    <font face="arial">
       <br/>
       <br/>
       <div>
         <div id="counterdivthe">
-        <div style="background-color: lightblue; color: black;"><img src="Rock.jpg" alt="The Rock"/><br/><div class="tooltip"><bigger>The Rock</bigger><yt-icon style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="width: 14px; height: 14px;" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M9.8,17.3l-4.2-4.1L7,11.8l2.8,2.7L17,7.4 l1.4,1.4L9.8,17.3z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
-          <span class="tooltiptext">Verified</span>
-        </div></div>
-        <fatty id="counterthe">0</fatty><big>subscribers</big>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+          <div style="background-color: lightblue; color: black;"><img src="Rock.jpg" alt="The Rock"/><br/><div class="tooltip"><bigger>The Rock</bigger><yt-icon style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="width: 14px; height: 14px;" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M9.8,17.3l-4.2-4.1L7,11.8l2.8,2.7L17,7.4 l1.4,1.4L9.8,17.3z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
+            <span class="tooltiptext">Verified</span>
+          </div>
         </div>
-        <div id="counterdiv">
+        <fatty id="counterthe">0</fatty>
+      </div>
+      <div id="counterdiv">
         <div style="background-color: lightskyblue; color: black;"><img src="Photo.jpg" alt="Isaiah Photo"/><br/><div class="tooltip"><bigger>Isaiah Photo</bigger><yt-icon style="width: 14px; height: 14px;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="width: 14px; height: 14px;" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M9.8,17.3l-4.2-4.1L7,11.8l2.8,2.7L17,7.4 l1.4,1.4L9.8,17.3z" class="style-scope yt-icon"></path></g></svg><!--css-build:shady--></yt-icon>
           <span class="tooltiptext">Verified</span>
-        </div></div>
-        <fatty id="counter">0</fatty><big>subscribers</big>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        </div>
       </div>
-    </font>
+        <fatty id="counter">0</fatty>
+        <div class="bottom">
+          <bigger>
+            <marquee id="winning">No one is winning currently.</marquee>
+          </bigger>
+        </div>
   </body>
 </html>
